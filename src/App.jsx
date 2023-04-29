@@ -12,7 +12,11 @@ function App() {
     setFirstStep(true);
   };
   // LOGIN
-  const [isLoggedIn, setIsLoggedIn] = useState({ login: false, username: "" });
+  const [isLoggedIn, setIsLoggedIn] = useState({
+    login: false,
+    username: "",
+    avatar: null,
+  });
 
   useEffect(() => {
     const storedUserInfo = localStorage.getItem("isLoggedIn");
@@ -27,11 +31,15 @@ function App() {
 
   const logInHandler = (props) => {
     localStorage.setItem("isLoggedIn", "1");
-    setIsLoggedIn({ login: true, username: props.username });
+    setIsLoggedIn({
+      login: true,
+      username: props.username,
+      avatar: props.avatar,
+    });
   };
   const logoutHandler = () => {
     localStorage.clear();
-    setIsLoggedIn({ login: false, username: "" });
+    setIsLoggedIn({ login: false, username: "", avatar: null });
   };
 
   return (
@@ -39,6 +47,7 @@ function App() {
       value={{
         isLoggedIn: isLoggedIn.login,
         username: isLoggedIn.username,
+        avatar: isLoggedIn.avatar,
         onLogout: logoutHandler,
       }}
     >

@@ -10,6 +10,7 @@ const Home = (props) => {
   };
 
   const ctx = useContext(LoginContext);
+  console.log(ctx);
 
   return (
     <main>
@@ -19,10 +20,9 @@ const Home = (props) => {
         </div>
         <nav className="nav">
           <p className="username">{ctx.username}</p>
-          <div
-            className="avatar-container"
-            onClick={handleToogleNavVisible}
-          ></div>
+          <div className="avatar-container" onClick={handleToogleNavVisible}>
+            <img src={ctx.avatar} alt="avatar" />
+          </div>
           <SideNav
             onCloseNav={handleToogleNavVisible}
             visible={navVisible}

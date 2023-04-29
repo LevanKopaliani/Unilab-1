@@ -5,16 +5,21 @@ import { AvatarInput } from "../AvatarInput";
 
 const Login = (props) => {
   const [username, setUsername] = useState("");
+  const [avatar, setAvatar] = useState(null);
 
   const handleUserChange = (e) => {
     setUsername(e.target.value);
   };
 
+  const handleGetAvatar = (propimg) => {
+    setAvatar(propimg.avatar);
+  };
+
   const onsubmitHandler = (e) => {
     e.preventDefault();
-    console.log("prevent");
     props.onLogin({
       username: username,
+      avatar: avatar,
     });
   };
 
@@ -23,7 +28,7 @@ const Login = (props) => {
       <div className="login_form-container">
         <form className="login-form" onSubmit={onsubmitHandler}>
           <h1 className="title">Get Started</h1>
-          <AvatarInput />
+          <AvatarInput onGetAvatar={handleGetAvatar} />
           <div className="user-input">
             <label htmlFor="name">fill in you name</label>
             <input
