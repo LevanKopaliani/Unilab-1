@@ -1,0 +1,48 @@
+.backdrop {
+  position: absolute;
+  z-index: 0;
+  height: 100vh;
+  width: 100%;
+  background-color: rgba($color: #2f3542, $alpha: 0.3);
+  //   opacity: 0.1;
+  top: 0;
+  right: -100%;
+  transition: all 0.3s ease-in;
+  &.visible {
+    top: 0;
+    right: 0;
+  }
+}
+.sidenav {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  right: -100%;
+  max-width: 320px;
+  width: 100%;
+  height: 100vh;
+  background-color: #2f3542;
+  padding: 20px 16px;
+  transition: all 0.3s ease-in;
+  &.visible {
+    top: 0;
+    right: 0;
+  }
+  .user-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+
+    .avatar-container {
+      width: 100px;
+      height: 100px;
+    }
+    button {
+      border: 0;
+      padding: 6px;
+      border-radius: 4px;
+    }
+  }
+}

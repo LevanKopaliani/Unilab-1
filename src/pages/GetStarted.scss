@@ -1,0 +1,36 @@
+.getstarted_page {
+  background-color: #000;
+  min-height: 100vh;
+  text-align: center;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &-content {
+    max-height: 768px;
+    .title {
+      margin-top: 46px;
+      font-size: 54px;
+      line-height: 150%;
+      font-weight: 600;
+      text-transform: capitalize;
+    }
+    button {
+      margin-top: 150px;
+      max-width: 388px;
+      width: 100%;
+      padding: 16px 0;
+      background-color: #5efc8d;
+      color: #000;
+      font-size: 48px;
+      line-height: 150%;
+      font-weight: 300;
+      text-transform: capitalize;
+      border-radius: 4px;
+      transition: 0.3s;
+      &:hover {
+        background-color: #fff;
+      }
+    }
+  }
+}

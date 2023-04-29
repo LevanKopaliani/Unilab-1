@@ -1,0 +1,19 @@
+.avatar-input {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  #avatar {
+    display: none;
+  }
+  .avatar-img {
+    width: 122px;
+    height: 122px;
+    border-radius: 50%;
+    background-color: #e6ebff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
