@@ -8,9 +8,11 @@ export const AvatarInput = (props) => {
 
   const handleAvatarInput = (e) => {
     const file = e.target.files[0];
+
     setAvatarImg(file);
   };
   //////////////////
+
   useEffect(() => {
     if (avatarImg) {
       const reader = new FileReader();

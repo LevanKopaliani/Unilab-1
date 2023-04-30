@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import "./App.css";
 import GetStarted from "./pages/GetStarted";
 import Login from "./components/Login/Login";
@@ -11,6 +11,7 @@ function App() {
   const handleFirstStepChange = () => {
     setFirstStep(true);
   };
+
   // LOGIN
   const [isLoggedIn, setIsLoggedIn] = useState({
     login: false,
@@ -18,19 +19,41 @@ function App() {
     avatar: null,
   });
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const storedUserInfo = localStorage.getItem("isLoggedIn");
     console.log(storedUserInfo);
     if (storedUserInfo === "1") {
+      const refreshState = { ...localStorage };
+      /// Avatar problem Fix avter refsher (because storage null === string)
+      if (refreshState.avatar === "null") {
+        refreshState.avatar = null;
+      }
+      //////
       setIsLoggedIn((prev) => {
-        return { ...prev, login: true };
+        return {
+          ...refreshState,
+          login: true,
+        };
       });
       setFirstStep(true);
     }
   }, []);
 
+  // useEffect(() => {
+  //   const storedUserInfo = localStorage.getItem("isLoggedIn");
+  //   console.log(storedUserInfo);
+  //   if (storedUserInfo === "1") {
+  //     setIsLoggedIn((prev) => {
+  //       return { ...localStorage, login: true };
+  //     });
+  //     setFirstStep(true);
+  //   }
+  // }, []);
+
   const logInHandler = (props) => {
     localStorage.setItem("isLoggedIn", "1");
+    localStorage.setItem("username", props.username);
+    localStorage.setItem("avatar", props.avatar);
     setIsLoggedIn({
       login: true,
       username: props.username,

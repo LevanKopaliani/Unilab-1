@@ -12,7 +12,11 @@ const Login = (props) => {
   };
 
   const handleGetAvatar = (propimg) => {
-    setAvatar(propimg.avatar);
+    if (propimg.avatar === null) {
+      setAvatar(null);
+    } else {
+      setAvatar(propimg.avatar);
+    }
   };
 
   const onsubmitHandler = (e) => {
