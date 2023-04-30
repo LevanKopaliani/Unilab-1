@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import "./Login.scss";
-
 import { AvatarInput } from "../AvatarInput";
 
 const Login = (props) => {
   const [username, setUsername] = useState("");
+  const [loginValidated, setLoginValidated] = useState(true);
   const [avatar, setAvatar] = useState(null);
 
   const handleUserChange = (e) => {
@@ -21,10 +21,19 @@ const Login = (props) => {
 
   const onsubmitHandler = (e) => {
     e.preventDefault();
+
     props.onLogin({
       username: username,
       avatar: avatar,
     });
+  };
+
+  const handleValidateLogin = (e) => {
+    if (e.target.value.length < 2) {
+      setLoginValidated(false);
+    } else {
+      setLoginValidated(true);
+    }
   };
 
   return (
@@ -39,12 +48,16 @@ const Login = (props) => {
               value={username}
               onChange={handleUserChange}
               type="text"
-              id="name"
               placeholder="your name"
               min="2"
+              onBlur={handleValidateLogin}
+              className={!loginValidated ? "username notvalid" : "username"}
             />
+            {!loginValidated && <p>* enter username please (min two letter)</p>}
           </div>
-          <button type="submit">Sign In</button>
+          <button type="submit" disabled={username.length < 2}>
+            Sign In
+          </button>
         </form>
       </div>
     </div>

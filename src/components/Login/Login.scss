@@ -38,7 +38,7 @@
         flex-direction: column;
         gap: 16px;
         width: 100%;
-        #name {
+        .username {
           font-size: 22px;
           line-height: 150%;
           font-weight: 300;
@@ -50,6 +50,9 @@
           padding: 22.5px 24px;
           &::placeholder {
             opacity: 0.2;
+          }
+          &.notvalid {
+            outline: 1px solid red;
           }
         }
       }

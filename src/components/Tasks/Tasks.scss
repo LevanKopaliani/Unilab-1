@@ -1,0 +1,41 @@
+.tasks-container {
+  max-width: 595px;
+  width: 100%;
+  .title {
+    text-align: center;
+    font-size: 42px;
+    line-height: 150%;
+    font-weight: 600;
+    text-transform: capitalize;
+  }
+  .task-input {
+    margin-top: 27px;
+    display: flex;
+    input {
+      width: 100%;
+      background-color: #e6ebff;
+      height: 76px;
+      border-radius: 4px;
+      border: none;
+      outline: none;
+      padding: 22.5px 24px;
+      font-size: 22px;
+      line-height: 150%;
+      font-weight: 300;
+      &::placeholder {
+        opacity: 0.2;
+      }
+    }
+    button {
+      height: 76px;
+      max-width: 108px;
+      width: 100%;
+      background-color: #5efc8d;
+      border: none;
+      font: inherit;
+      font-size: 32px;
+      line-height: 150%;
+      font-weight: 300;
+    }
+  }
+}

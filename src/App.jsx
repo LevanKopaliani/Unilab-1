@@ -21,7 +21,6 @@ function App() {
 
   useLayoutEffect(() => {
     const storedUserInfo = localStorage.getItem("isLoggedIn");
-    console.log(storedUserInfo);
     if (storedUserInfo === "1") {
       const refreshState = { ...localStorage };
       /// Avatar problem Fix avter refsher (because storage null === string)

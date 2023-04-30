@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import "./Home.scss";
 import LoginContext from "../context/LoginContext";
 import SideNav from "../components/SideNav";
+import Tasks from "../components/Tasks/Tasks";
 
 const Home = (props) => {
   const [navVisible, setNavVisible] = useState(false);
@@ -10,7 +11,6 @@ const Home = (props) => {
   };
 
   const ctx = useContext(LoginContext);
-  console.log(ctx.avatar);
 
   return (
     <main>
@@ -32,7 +32,9 @@ const Home = (props) => {
           />
         </nav>
       </header>
-      <p>test</p>
+      <div className="main-content">
+        <Tasks />
+      </div>
     </main>
   );
 };
