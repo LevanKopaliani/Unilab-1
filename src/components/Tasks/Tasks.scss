@@ -7,6 +7,9 @@
     line-height: 150%;
     font-weight: 600;
     text-transform: capitalize;
+    @media (max-width: 580px) {
+      font-size: 34px;
+    }
   }
   .task-input {
     margin-top: 27px;
