@@ -38,17 +38,6 @@ function App() {
     }
   }, []);
 
-  // useEffect(() => {
-  //   const storedUserInfo = localStorage.getItem("isLoggedIn");
-  //   console.log(storedUserInfo);
-  //   if (storedUserInfo === "1") {
-  //     setIsLoggedIn((prev) => {
-  //       return { ...localStorage, login: true };
-  //     });
-  //     setFirstStep(true);
-  //   }
-  // }, []);
-
   const logInHandler = (props) => {
     localStorage.setItem("isLoggedIn", "1");
     localStorage.setItem("username", props.username);

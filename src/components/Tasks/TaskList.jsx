@@ -3,23 +3,17 @@ import "./TaskList.scss";
 import TaskListItem from "./TaskListItem";
 
 const TaskList = (props) => {
-  const handleSetCompleted = (e) => {
-    props.onTaskComplete(e);
-  };
-  const handleDeleteTask = (e) => {
-    props.onTaskDelete(e);
-  };
-
   return (
     <div className="tasklist-container">
       <ul className="tasklist">
         {props.tasklist.map((item, index) => (
           <TaskListItem
-            key={item.content + index}
+            id={item.id}
+            key={item.id}
             content={item.content}
             complete={item.complete}
-            onSetCompleted={handleSetCompleted}
-            onDeleteTask={handleDeleteTask}
+            onTaskComplete={props.onTaskComplete}
+            onTaskDelete={props.onTaskDelete}
           />
         ))}
       </ul>

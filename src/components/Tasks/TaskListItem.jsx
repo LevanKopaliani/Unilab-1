@@ -1,27 +1,22 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import "./TaskListItem.scss";
 import DoneImg from "../../assets/img/done.svg";
 import DeleteImg from "../../assets/img/delete.svg";
 
 const TaskListItem = (props) => {
-  ///////// update completed
-  const handleSetCompleted = (e) => {
-    props.onSetCompleted(props.content);
-  };
-
-  const handleDeleteTask = (e) => {
-    props.onDeleteTask(props.content);
-  };
-
   return (
     <li
       className={props.complete ? "tasklistitem taskcompleted" : "tasklistitem"}
     >
       <p>{props.content}</p>
-      <button className="complete" onClick={handleSetCompleted}>
+      <button
+        className="complete"
+        onClick={() => props.onTaskComplete(props.id)}
+      >
         <img src={DoneImg} alt="complete" />
       </button>
-      <button className="delete" onClick={handleDeleteTask}>
+
+      <button className="delete" onClick={() => props.onTaskDelete(props.id)}>
         <img src={DeleteImg} alt="delete" />
       </button>
     </li>

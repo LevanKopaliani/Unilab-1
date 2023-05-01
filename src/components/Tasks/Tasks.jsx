@@ -1,16 +1,17 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import "./Tasks.scss";
 import TaskList from "./TaskList";
 
 const Tasks = () => {
   const taskInputRef = useRef();
   const [tasks, setTasks] = useState([
-    // { content: "apple", complete: false },
-    // { content: "banana", complete: false },
-    // { content: "cherry", complete: false },
+    { id: 1, content: "Homework", complete: false },
+    { id: 2, content: "Grocery Shopping", complete: false },
+    { id: 3, content: "Homework", complete: false },
+    { id: 4, content: "Grocery Shopping", complete: false },
   ]);
   /////////////
-  useEffect(() => {
+  useLayoutEffect(() => {
     const storedTasks = JSON.parse(localStorage.getItem("tasks"));
     if (storedTasks) {
       setTasks(storedTasks);
@@ -25,27 +26,26 @@ const Tasks = () => {
   //////////////
   const handleAddTask = (e) => {
     if (taskInputRef.current.value.length > 0) {
+      ///// uniq ID
+      const newTaskId = +new Date();
       setTasks([
-        { content: taskInputRef.current.value, complete: false },
+        { id: newTaskId, content: taskInputRef.current.value, complete: false },
         ...tasks,
       ]);
       taskInputRef.current.value = "";
-
       // localStorage.setItem("tasks", JSON.stringify(tasks));
     }
   };
-  const handleTaskComplete = (completeditem) => {
+  const handleTaskComplete = (id) => {
     setTasks(
       tasks.map((item) =>
-        item.content == completeditem
-          ? { content: item.content, complete: !item.complete }
-          : item
+        item.id == id ? { ...item, complete: !item.complete } : item
       )
     );
   };
 
-  const handleDeleteTask = (tobeDeletedTask) => {
-    setTasks(tasks.filter((task) => task.content != tobeDeletedTask));
+  const handleDeleteTask = (id) => {
+    setTasks(tasks.filter((task) => task.id != id));
   };
 
   return (
