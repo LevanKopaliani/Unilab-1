@@ -34,11 +34,13 @@ main {
         line-height: 150%;
         font-weight: 300;
         text-transform: capitalize;
+        cursor: pointer;
         @media (max-width: 380px) {
           display: none;
         }
       }
       .avatar-container {
+        cursor: pointer;
         position: relative;
         width: 68px;
         height: 68px;

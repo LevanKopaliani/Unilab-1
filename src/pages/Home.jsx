@@ -19,7 +19,9 @@ const Home = (props) => {
           <p className="logo-text">TO DO</p>
         </div>
         <nav className="nav">
-          <p className="username">{ctx.username}</p>
+          <p className="username" onClick={handleToogleNavVisible}>
+            {ctx.username}
+          </p>
           <div className="avatar-container" onClick={handleToogleNavVisible}>
             {ctx.avatar && <img src={ctx.avatar} alt="avatar" />}
           </div>
